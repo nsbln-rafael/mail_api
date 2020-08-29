@@ -19,26 +19,26 @@ class SendMail extends Mailable implements ShouldQueue
 	use Queueable, SerializesModels;
 
 	/** @var string Main text for mail */
-	private $message;
+	public $text;
 
-	/** @var string Default 'from' address */
-	private $from;
+	/** @var array Default 'from' address */
+	public $from;
 
 	/** @var string Default recipient */
-	private $recipient;
+	public $recipient;
 
 	/**
 	 * Create a new message instance.
 	 *
-	 * @param string $message Letter message
+	 * @param string $text Letter message
 	 *
 	 * @return void
 	 */
-	public function __construct(string $message)
+	public function __construct(string $text)
 	{
-		$this->message   = $message;
-		$this->from      = env("MAIL_DEFAULT_FROM");
-		$this->recipient = env("MAIL_DEFAULT_RECIPIENT");
+		$this->text          = $text;
+		$this->from['email'] = env("MAIL_DEFAULT_FROM");
+		$this->recipient     = env("MAIL_DEFAULT_RECIPIENT");
 	}
 
 	/**
@@ -51,6 +51,6 @@ class SendMail extends Mailable implements ShouldQueue
 		return $this
 			->from($this->from)
 			->to($this->recipient)
-			->view('view.mail');
+			->view('mail');
 	}
 }
