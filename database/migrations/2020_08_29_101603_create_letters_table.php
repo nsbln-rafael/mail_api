@@ -7,11 +7,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * Create 'mails' table.
+ * Create 'letters' table.
  *
  * @author Nasibullin Rafael
  */
-class CreateMailsTable extends Migration
+class CreateLettersTable extends Migration
 {
 	/**
 	* Run the migrations.
@@ -20,7 +20,7 @@ class CreateMailsTable extends Migration
 	*/
 	public function up()
 	{
-		Schema::create('mails', function (Blueprint $table) {
+		Schema::create('letters', function (Blueprint $table) {
 			$table->id();
 			$table->text('message');
 			$table->string('ip');
@@ -35,6 +35,6 @@ class CreateMailsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('mails');
+		Schema::dropIfExists('letters');
 	}
 }

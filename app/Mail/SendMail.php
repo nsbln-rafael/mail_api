@@ -30,7 +30,7 @@ class SendMail extends Mailable implements ShouldQueue
 	/**
 	 * Create a new message instance.
 	 *
-	 * @param string $message Mail message
+	 * @param string $message Letter message
 	 *
 	 * @return void
 	 */
@@ -51,6 +51,6 @@ class SendMail extends Mailable implements ShouldQueue
 		return $this
 			->from($this->from)
 			->to($this->recipient)
-			->view('view.name');
+			->view('view.mail');
 	}
 }
