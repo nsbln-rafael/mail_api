@@ -37,7 +37,7 @@ class MailSend extends Controller
 
 		//Response an error if ip address is already in database.
 		if (null !== $mail) {
-			return response()->json("Sorry! You can't send more than one mail!", 400);
+			return response()->json(["message" => "Sorry! You can't send more than one mail!"], 400);
 		}
 
 		//Check if message is not empty.
@@ -58,7 +58,7 @@ class MailSend extends Controller
 
 			Mail::send(new SendMail($message));
 
-			return response()->json('Letter successfully sent!', 201);
+			return response()->json(["message" => "Mail successfully sent!"], 201);
 		}
 	}
 }
